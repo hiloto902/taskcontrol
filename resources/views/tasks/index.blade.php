@@ -33,20 +33,6 @@
                         </div>
 
                         <div class="form-group row">
-                                <label for="name" class="col-md-4 col-form-label text-md-right">{{ __('対象') }}</label>
-
-                                <div class="col-md-6">
-                                    <input id="sns_name" type="text" class="form-control @error('sns_name') is-invalid @enderror" name="sns_name" value="{{ old('sns_name') }}">
-
-                                    @error('name')
-                                        <span class="invalid-feedback" role="alert">
-                                            <strong>{{ $message }}</strong>
-                                        </span>
-                                    @enderror
-                                </div>
-                        </div>
-
-                        <div class="form-group row">
                                 <label for="name" class="col-md-4 col-form-label text-md-right">{{ __('質問') }}</label>
 
                                 <div class="col-md-6">
@@ -77,18 +63,7 @@
                 <div class="container-fluid">
                 <div class="row">   
                 
-                <div class="col-sm-4" style="padding:20px 0; padding-left:0px;">
-                <form class="form-inline" action="{{url('/tasks/search')}}" method="post">
-                    @csrf
-                    <div class="form-group">
-                    <input type="text" name="word" @isset($keyword) value="{{$keyword}}" @endisset class="form-control" placeholder="キーワードを入力してください">
-                    </div>
-                    <input type="submit" value="検索" class="btn btn-info">
-                </form>
-                </div>
-
-                <div class="col-sm-8" style="text-align:right;">
-                </div>
+               
                             
                 
                 <div class="card">
@@ -97,7 +72,7 @@
                         <thead>
                         <tr>
                             <th>課題</th>
-                            <th>対象</th>
+                            
                             <th>質問</th>
                         </tr>
                         </thead>
@@ -105,10 +80,11 @@
                             @foreach($tasks as $task)
                             <tr>
                                 <td>{{$task->title}}</td>
-                                <td>{{$task->sns_name}}</td>
+                                
                                 <td>{{$task->comment}}</td>
                                 <td>
                                     <div style="display:inline-flex">
+                                        <a href="{{route('tasks.detail',['task'=>$task->id])}}" class="btn btn-primary btn-sm">詳細</a>
                                         <a href="{{route('tasks.edit',['task'=>$task->id])}}" class="btn btn-primary btn-sm">編集</a>
                                         <form action="{{route('tasks.destroy',['task'=>$task->id])}}" method="POST">
                                             {{ csrf_field() }}

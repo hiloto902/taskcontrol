@@ -2,9 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Task;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class TaskController extends Controller
+
 {
     /**
      * Display a listing of the resource.
@@ -37,7 +40,6 @@ class TaskController extends Controller
         $task = new Task();
         $task->user_id = Auth::id();
         $task->title = $request->input('title');
-        $task->sns_name = $request->input('sns_name');
         $task->comment = $request->input('comment');
         $task->save();
 
@@ -60,7 +62,14 @@ class TaskController extends Controller
      *
      * @param  int  $id
      * @return \Illuminate\Http\Response
-     */
+    */ 
+    
+    public function detail(Task $task)
+    {
+        return view("tasks/detail")
+            ->with('task', Task::find($id));
+    }
+
     public function edit($id)
     {
         return view("tasks/edit")
@@ -78,7 +87,6 @@ class TaskController extends Controller
     {
         $task->user_id = Auth::id();
         $task->title = $request->input('title');
-        $task->sns_name = $request->input('sns_name');
         $task->comment = $request->input('comment');
         $task->save();
 
@@ -96,4 +104,6 @@ class TaskController extends Controller
         $task->delete();
         return redirect(route('tasks.index'));
     }
+
+   
 }
