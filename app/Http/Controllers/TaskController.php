@@ -52,9 +52,9 @@ class TaskController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Task $task)
     {
-        //
+        return view("tasks/detail")->with('task', Task::find($task->id));
     }
 
     /**
@@ -67,7 +67,7 @@ class TaskController extends Controller
     public function detail(Task $task)
     {
         return view("tasks/detail")
-            ->with('task', Task::find($id));
+            ->with('tasks',Task::all());
     }
 
     public function edit($id)

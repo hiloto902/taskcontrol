@@ -18,12 +18,11 @@ use Illuminate\Support\Facades\Route;
 
 Auth::routes();
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::group(['middleware' => ['auth']], function () {
+    Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
-Route::resource('/tasks', 'App\Http\Controllers\TaskController');
+    Route::resource('/tasks', 'App\Http\Controllers\TaskController');
 
-Route::get('/tech', function() {
-    return view('welcome');
+    Route::get('/detail', 'App\Http\Controllers\TaskController@detail');
+
 });
-
-// Route::get('/detail', 'App\Http\Controllers\TaskController@detail');
