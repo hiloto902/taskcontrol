@@ -4,9 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-//返信
-
-class AnswersFoldersTable extends Migration
+class AddCaseIdTotasksTable extends Migration
 {
     /**
      * Run the migrations.
@@ -15,14 +13,11 @@ class AnswersFoldersTable extends Migration
      */
     public function up()
     {
-        Schema::create('answers', function (Blueprint $table) {
-            $table->id();
-            $table->string('title');
-            $table->bigInteger('task_id')->unsigned();
-            $table->timestamps();
+        Schema::table('tasks', function (Blueprint $table) {
+            $table->bigInteger('case_id')->unsigned();
 
-            $table->foreign('task_id')
-            ->references('id')->on('tasks')
+            $table->foreign('case_id')
+            ->references('id')->on('cases')
             ->onDelete('cascade');
         });
     }
@@ -34,6 +29,8 @@ class AnswersFoldersTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('answers');
+        Schema::table('tasks', function (Blueprint $table) {
+            //
+        });
     }
 }

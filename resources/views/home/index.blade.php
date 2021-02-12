@@ -84,9 +84,9 @@
                                 <td>{{$task->comment}}</td>
                                 <td>
                                     <div style="display:inline-flex">
-                                        <a href="{{route('home.show', ['task'=>$task->id])}}" class="btn btn-primary btn-sm">詳細</a>
-                                        <a href="{{route('home.edit',['task'=>$task->id])}}" class="btn btn-primary btn-sm">編集</a>
-                                        <form action="{{route('home.destroy',['task'=>$task->id])}}" method="POST">
+                                        <a href="{{route('tasks.show', ['task'=>$task->id])}}" class="btn btn-primary btn-sm">詳細</a>
+                                        <a href="{{route('tasks.edit',['task'=>$task->id])}}" class="btn btn-primary btn-sm">編集</a>
+                                        <form action="{{route('tasks.destroy',['task'=>$task->id])}}" method="POST">
                                             {{ csrf_field() }}
                                             @method('DELETE')
                                             <input type="submit" value="削除" class="btn btn-danger btn-sm btn-dell"

@@ -4,9 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-//返信
-
-class AnswersFoldersTable extends Migration
+class AddCompanyIdTousersTable extends Migration
 {
     /**
      * Run the migrations.
@@ -15,14 +13,11 @@ class AnswersFoldersTable extends Migration
      */
     public function up()
     {
-        Schema::create('answers', function (Blueprint $table) {
-            $table->id();
-            $table->string('title');
-            $table->bigInteger('task_id')->unsigned();
-            $table->timestamps();
+        Schema::table('users', function (Blueprint $table) {
+            $table->bigInteger('company_id')->unsigned();
 
-            $table->foreign('task_id')
-            ->references('id')->on('tasks')
+            $table->foreign('company_id')
+            ->references('id')->on('companies')
             ->onDelete('cascade');
         });
     }
@@ -34,6 +29,8 @@ class AnswersFoldersTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('answers');
+        Schema::table('users', function (Blueprint $table) {
+            //
+        });
     }
 }

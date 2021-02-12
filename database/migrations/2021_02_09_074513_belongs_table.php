@@ -17,7 +17,18 @@ class BelongsTable extends Migration
     {
         Schema::create('belongs', function (Blueprint $table) {
             $table->id();
+            $table->bigInteger('user_id')->unsigned();
+            $table->bigInteger('case_id')->unsigned();
             $table->timestamps();
+            $table->boolen('is_admin');
+
+            $table->foreign('user_id')
+            ->references('id')->on('users')
+            ->onDelete('cascade');
+            $table->foreign('case_id')
+            ->references('id')->on('cases')
+            ->onDelete('cascade');
+            
         });
     }
 

@@ -17,7 +17,17 @@ class CasesTable extends Migration
     {
         Schema::create('cases', function (Blueprint $table) {
             $table->id();
+            $table->string('title');
+            $table->bigInteger('company_id')->unsigned();
+            $table->bigInteger('belong_id')->unsigned();
             $table->timestamps();
+
+            $table->foreign('company_id')
+            ->references('id')->on('companies')
+            ->onDelete('cascade');
+            $table->foreign('belong_id')
+            ->references('id')->on('belongs')
+            ->onDelete('cascade');
         });
     }
 
