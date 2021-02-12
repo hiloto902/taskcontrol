@@ -16,7 +16,7 @@ class TaskController extends Controller
      */
     public function index(Request $request)
     {
-        return view("tasks.index")->with('tasks',Task::all());
+        return view("home.index")->with('tasks',Task::all());
     }
 
     /**
@@ -43,7 +43,7 @@ class TaskController extends Controller
         $task->comment = $request->input('comment');
         $task->save();
 
-        return redirect(route('tasks.index'));
+        return redirect(route('home.index'));
     }
 
     /**
@@ -54,7 +54,7 @@ class TaskController extends Controller
      */
     public function show(Task $task)
     {
-        return view("tasks/detail")->with('task', Task::find($task->id));
+        return view("home.detail")->with('task', Task::find($task->id));
     }
 
     /**
@@ -66,13 +66,13 @@ class TaskController extends Controller
     
     public function detail(Task $task)
     {
-        return view("tasks/detail")
+        return view("home.detail")
             ->with('tasks',Task::all());
     }
 
     public function edit($id)
     {
-        return view("tasks/edit")
+        return view("home.edit")
             ->with('task', Task::find($id));
     }
 
@@ -90,7 +90,7 @@ class TaskController extends Controller
         $task->comment = $request->input('comment');
         $task->save();
 
-        return redirect(route('tasks.index'));
+        return redirect(route('home.index'));
     }
 
     /**
@@ -102,7 +102,7 @@ class TaskController extends Controller
     public function destroy(Task $task)
     {
         $task->delete();
-        return redirect(route('tasks.index'));
+        return redirect(route('home.index'));
     }
 
    

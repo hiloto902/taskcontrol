@@ -23,7 +23,7 @@
                         </tbody>
                     </table>
             </div>
-            <form method="POST" action="{{ route('tasks.store') }}">
+            <form method="POST" action="{{ route('home.store') }}">
                         @csrf
                         <div class="form-group row">
                                 <label for="name" class="col-md-4 col-form-label text-md-right">{{ __('課題') }}</label>
