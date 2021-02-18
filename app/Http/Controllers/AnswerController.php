@@ -2,21 +2,18 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Task;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
 
-class TaskController extends Controller
-
+class AnswerController extends Controller
 {
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function index(Request $request)
+    public function index()
     {
-        return view("home.index")->with('tasks',Task::all());
+        //
     }
 
     /**
@@ -37,13 +34,7 @@ class TaskController extends Controller
      */
     public function store(Request $request)
     {
-        $task = new Task();
-        $task->user_id = Auth::id();
-        $task->title = $request->input('title');
-        $task->comment = $request->input('comment');
-        $task->save();
-
-        return redirect(route('home.index'));
+        //
     }
 
     /**
@@ -52,9 +43,9 @@ class TaskController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(Task $task)
+    public function show($id)
     {
-        return view("home.details")->with('task', Task::find($task->id));
+        //
     }
 
     /**
@@ -62,13 +53,10 @@ class TaskController extends Controller
      *
      * @param  int  $id
      * @return \Illuminate\Http\Response
-    */ 
-
-
+     */
     public function edit($id)
     {
-        return view("home.edit")
-            ->with('task', Task::find($id));
+        //
     }
 
     /**
@@ -80,12 +68,7 @@ class TaskController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $task->user_id = Auth::id();
-        $task->title = $request->input('title');
-        $task->comment = $request->input('comment');
-        $task->save();
-
-        return redirect(route('home.index'));
+        //
     }
 
     /**
@@ -94,11 +77,8 @@ class TaskController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Task $task)
+    public function destroy($id)
     {
-        $task->delete();
-        return redirect(route('home.index'));
+        //
     }
-
-   
 }

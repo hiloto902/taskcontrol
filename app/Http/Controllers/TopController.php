@@ -2,12 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Task;
+use App\Models\Cases;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
-class TaskController extends Controller
-
+class TopController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -16,7 +15,7 @@ class TaskController extends Controller
      */
     public function index(Request $request)
     {
-        return view("home.index")->with('tasks',Task::all());
+        return view("top.home")->with('cases',Cases::all());
     }
 
     /**
@@ -35,15 +34,14 @@ class TaskController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store1(Request $request)
     {
-        $task = new Task();
-        $task->user_id = Auth::id();
-        $task->title = $request->input('title');
-        $task->comment = $request->input('comment');
-        $task->save();
+        $matter = new Matter();
+        $matter->user_id = Auth::id();
+        $case->title = $request->input('title');
+        $case->save();
 
-        return redirect(route('home.index'));
+        return redirect(route('top.home'));
     }
 
     /**
@@ -52,9 +50,9 @@ class TaskController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(Task $task)
+    public function show($id)
     {
-        return view("home.details")->with('task', Task::find($task->id));
+        //
     }
 
     /**
@@ -62,13 +60,10 @@ class TaskController extends Controller
      *
      * @param  int  $id
      * @return \Illuminate\Http\Response
-    */ 
-
-
+     */
     public function edit($id)
     {
-        return view("home.edit")
-            ->with('task', Task::find($id));
+        //
     }
 
     /**
@@ -78,15 +73,7 @@ class TaskController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
-    {
-        $task->user_id = Auth::id();
-        $task->title = $request->input('title');
-        $task->comment = $request->input('comment');
-        $task->save();
-
-        return redirect(route('home.index'));
-    }
+    
 
     /**
      * Remove the specified resource from storage.
@@ -94,11 +81,36 @@ class TaskController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Task $task)
+    public function destroy($id)
     {
-        $task->delete();
-        return redirect(route('home.index'));
+        //
     }
 
-   
+    public function add_matters($id)
+    {
+        return view("top/add_matters")
+            ->with('matter', Matter::find($id));
+    }
+
+    public function add_companies($id)
+    {
+        return view("top/add_companies")
+            ->with('company', Company::find($id));
+    }
+
+    public function add_users($id)
+    {
+        return view("top/add_users")
+            ->with('user', User::find($id));
+    }
+
+    public function update(Request $request, $id)
+    {
+        $case->user_id = Auth::id();
+        $case->title = $request->input('title');
+        $case->save();
+
+        return redirect(route('top.home'));
+    }
+    
 }
