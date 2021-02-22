@@ -56,7 +56,7 @@ class TaskController extends Controller
     public function show(Task $task)
     {
         //詳細かつ返信
-        return view("home.details")->with('task', Task::find($task->id));
+        return view("home.details")->with('answer', Answer::find($task->id));
     }
 
     /**

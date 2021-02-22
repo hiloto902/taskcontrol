@@ -17,7 +17,7 @@ class AnswersFoldersTable extends Migration
     {
         Schema::create('answers', function (Blueprint $table) {
             $table->id();
-            $table->string('title');
+            $table->string('answer');
             $table->bigInteger('task_id')->unsigned();
             $table->timestamps();
 
