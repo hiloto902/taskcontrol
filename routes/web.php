@@ -27,6 +27,12 @@ Route::group(['middleware' => ['auth']], function () {
 
     Route::resource('/top', 'App\Http\Controllers\TopController');
 
+    Route::get('/add_companies', 'App\Http\Controllers\TaskController@add_companies');
+
+    Route::get('/add_users', 'App\Http\Controllers\TaskController@add_users');
+
+    Route::get('/add_matters', 'App\Http\Controllers\TaskController@add_matters');
+
     Route::resource('/answer', 'App\Http\Controllers\AnswerController');
 
 });

@@ -38,21 +38,23 @@ class TopController extends Controller
     public function store1(Request $request)
     {
         //会社を保存
-        $matter = new Conmapny();
-        $matter->user_id = Auth::id();
-        $matter->title = $request->input('title');
-        $matter->save();
+        $company = new Conmapny();
+        $company->user_id = Auth::id();
+        $company->name = $request->input('name');
+        $company->save();
 
-        return redirect(route('top.home'));
+        return redirect(route('top.add_companies'));
     }
 
     public function store2(Request $request)
     {
         //アカウントを保存
-        $matter = new User();
-        $matter->user_id = Auth::id();
-        $matter->title = $request->input('title');
-        $matter->save();
+        $user = new User();
+        $user->user_id = Auth::id();
+        $user->name = $request->input('name');
+        $user->email = $request->input('email');
+        $user->password = $request->input('password');
+        $user->save();
 
         return redirect(route('top.home'));
     }
@@ -62,7 +64,7 @@ class TopController extends Controller
         //案件を保存
         $matter = new Matter();
         $matter->user_id = Auth::id();
-        $matter->title = $request->input('title');
+        $matter->name = $request->input('name');
         $matter->save();
 
         return redirect(route('top.home'));
@@ -88,13 +90,13 @@ class TopController extends Controller
     public function edit1($id)
     {
         return view("top.edit_matter")
-            ->with('task', Task::find($id));
+            ->with('matter', Matter::find($id));
     }
 
     public function edit2($id)
     {
         return view("top.edit_company")
-            ->with('task', Task::find($id));
+            ->with('company', Company::find($id));
     }
 
     /**
