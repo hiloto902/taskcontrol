@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Cases;
+use App\Models\Matters;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -15,7 +15,8 @@ class TopController extends Controller
      */
     public function index(Request $request)
     {
-        return view("top.home")->with('cases',Cases::all());
+        //TOP画面＝案件を表示
+        return view("top.home")->with('matters',Matters::all());
     }
 
     /**
@@ -36,10 +37,33 @@ class TopController extends Controller
      */
     public function store1(Request $request)
     {
+        //会社を保存
+        $matter = new Conmapny();
+        $matter->user_id = Auth::id();
+        $matter->title = $request->input('title');
+        $matter->save();
+
+        return redirect(route('top.home'));
+    }
+
+    public function store2(Request $request)
+    {
+        //アカウントを保存
+        $matter = new User();
+        $matter->user_id = Auth::id();
+        $matter->title = $request->input('title');
+        $matter->save();
+
+        return redirect(route('top.home'));
+    }
+
+    public function store3(Request $request)
+    {
+        //案件を保存
         $matter = new Matter();
         $matter->user_id = Auth::id();
-        $case->title = $request->input('title');
-        $case->save();
+        $matter->title = $request->input('title');
+        $matter->save();
 
         return redirect(route('top.home'));
     }
@@ -61,9 +85,16 @@ class TopController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit1($id)
     {
-        //
+        return view("top.edit_matter")
+            ->with('task', Task::find($id));
+    }
+
+    public function edit2($id)
+    {
+        return view("top.edit_company")
+            ->with('task', Task::find($id));
     }
 
     /**
@@ -81,16 +112,19 @@ class TopController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy1($id)
     {
-        //
+        $matter->delete();
+        return redirect(route('top.home'));
     }
 
-    public function add_matters($id)
+    public function destroy2($id)
     {
-        return view("top/add_matters")
-            ->with('matter', Matter::find($id));
+        $company->delete();
+        return redirect(route('top.add_companies'));
     }
+
+    //ページ遷移
 
     public function add_companies($id)
     {
@@ -103,12 +137,36 @@ class TopController extends Controller
         return view("top/add_users")
             ->with('user', User::find($id));
     }
-
-    public function update(Request $request, $id)
+    
+    public function add_matters($id)
     {
-        $case->user_id = Auth::id();
-        $case->title = $request->input('title');
-        $case->save();
+        return view("top/add_matters")
+            ->with('matter', Matter::find($id));
+    }
+
+    public function update1(Request $request, $id)
+    {
+        $matter->user_id = Auth::id();
+        $matter->title = $request->input('title');
+        $matter->save();
+
+        return redirect(route('top.home'));
+    }
+
+    public function update2(Request $request, $id)
+    {
+        $matter->user_id = Auth::id();
+        $matter->title = $request->input('title');
+        $matter->save();
+
+        return redirect(route('top.home'));
+    }
+
+    public function update3(Request $request, $id)
+    {
+        $matter->user_id = Auth::id();
+        $matter->title = $request->input('title');
+        $matter->save();
 
         return redirect(route('top.home'));
     }

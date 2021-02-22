@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class AddCaseIdTotasksTable extends Migration
+class AddMatterIdToTasksTable extends Migration
 {
     /**
      * Run the migrations.
@@ -14,10 +14,10 @@ class AddCaseIdTotasksTable extends Migration
     public function up()
     {
         Schema::table('tasks', function (Blueprint $table) {
-            $table->bigInteger('case_id')->unsigned();
+            $table->bigInteger('matter_id')->unsigned();
 
-            $table->foreign('case_id')
-            ->references('id')->on('cases')
+            $table->foreign('matter_id')
+            ->references('id')->on('matters')
             ->onDelete('cascade');
         });
     }

@@ -1,4 +1,4 @@
-cases = 返信できる画面
+matters = 返信できる画面
 
 home = 案件と、新規課題制作ボタンとかがある画面
 		TaskControllerで操作
@@ -7,7 +7,7 @@ home = 案件と、新規課題制作ボタンとかがある画面
 top　= 最初の画面、ユーザーの追加ボタンとかがある
 		TopControllerで操作
 		　store*2, edit, destroy      中身:company, user
-		  store, edit, destroy        中身:case
+		  store, edit, destroy        中身:matter
 
 ユーザーテーブル
 案件
@@ -27,7 +27,8 @@ answers 返信
 0か１で管理者かどうかを
 
 
+やったこと
+画面とControllerを一致させた。
 
 やること
-viewsの画面とControllerのreturnを合わせる。データを取って表示する。
-Case→Matterに変える。Migrationファイルとその他全部
+データを取って表示する。

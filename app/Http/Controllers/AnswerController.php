@@ -13,7 +13,8 @@ class AnswerController extends Controller
      */
     public function index()
     {
-        //
+        //○○についての画面＝押された課題と返信を表示
+        return view("answer.index")->with('tasks',Task::all());
     }
 
     /**
@@ -34,7 +35,14 @@ class AnswerController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        //返信を保存
+        $task = new Task();
+        $task->user_id = Auth::id();
+        $task->title = $request->input('title');
+        $task->comment = $request->input('comment');
+        $task->save();
+
+        return redirect(route('home.index'));
     }
 
     /**
@@ -56,7 +64,8 @@ class AnswerController extends Controller
      */
     public function edit($id)
     {
-        //
+        return view("answer.edit")
+            ->with('task', Task::find($id));
     }
 
     /**
@@ -79,6 +88,7 @@ class AnswerController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $answer->delete();
+        return redirect(route('home.index'));
     }
 }

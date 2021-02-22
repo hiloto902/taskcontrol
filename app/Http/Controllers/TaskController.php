@@ -16,6 +16,7 @@ class TaskController extends Controller
      */
     public function index(Request $request)
     {
+        //○○案件の画面＝課題を表示
         return view("home.index")->with('tasks',Task::all());
     }
 
@@ -54,6 +55,7 @@ class TaskController extends Controller
      */
     public function show(Task $task)
     {
+        //詳細かつ返信
         return view("home.details")->with('task', Task::find($task->id));
     }
 

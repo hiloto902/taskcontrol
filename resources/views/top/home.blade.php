@@ -15,7 +15,7 @@
                         </tr>
                         </thead>
                         <tbody>
-                        //持ってくるのをcases
+                        //持ってくるのをmatters
                             @foreach($tasks as $task)
                             <tr>
                                 <td>{{$task->title}}</td>
@@ -52,7 +52,7 @@
             <!-- メニュー項目 -->
             <li id="company"><a href="/admin/member/new">発注会社マスタ</a></li>
             <li id="user"><a href="/admin/member/edit">新規アカウント追加</a></li>
-            <li id="case"><a href="/admin/member/add">新規案件追加</a></li>
+            <li id="matter"><a href="/admin/member/add">新規案件追加</a></li>
 
             </ul>
         </section>

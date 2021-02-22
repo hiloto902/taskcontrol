@@ -4,9 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-//案件
-
-class CasesTable extends Migration
+class MattersTable extends Migration
 {
     /**
      * Run the migrations.
@@ -15,7 +13,7 @@ class CasesTable extends Migration
      */
     public function up()
     {
-        Schema::create('cases', function (Blueprint $table) {
+        Schema::create('matters', function (Blueprint $table) {
             $table->id();
             $table->string('title');
             $table->bigInteger('company_id')->unsigned();
@@ -38,6 +36,6 @@ class CasesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('cases');
+        Schema::dropIfExists('matters');
     }
 }
