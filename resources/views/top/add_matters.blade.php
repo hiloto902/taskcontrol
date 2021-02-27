@@ -1,62 +1,19 @@
+@extends('layouts.app')
+
+@section('content')
 <div class="container">
-        
+    
+    <aside class="main-sidebar">
+        <section class="sidebar">
+            <ul class="sidebar-menu">
 
-    <div class="row justify-content-center">
-        <div class="col-md-8">
-            <div class="card">
-                <div class="card-header">課題の追加</div>
+            <!-- メニュー項目 -->
+            <li id="company"><a href="top.add_companies">発注会社マスタ</a></li>
+            <li id="user"><a href="top.add_users">新規アカウント追加</a></li>
+            <li id="matter"><a href="top/add_matters">新規案件追加</a></li>
 
-                <div class="card-body">
-                    @if (session('status'))
-                        <div class="alert alert-success" role="alert">
-                            {{ session('status') }}
-                        </div>
-                    @endif
-                 @auth
-                    <form method="POST" action="{{ route('tasks.store') }}">
-                        @csrf
-                        <div class="form-group row">
-                                <label for="name" class="col-md-4 col-form-label text-md-right">{{ __('課題') }}</label>
-
-                                <div class="col-md-6">
-                                    <input id="title" type="text" class="form-control @error('title') is-invalid @enderror" name="title" value="{{ old('title') }}" required autocomplete="title" autofocus>
-
-                                    @error('name')
-                                        <span class="invalid-feedback" role="alert">
-                                            <strong>{{ $message }}</strong>
-                                        </span>
-                                    @enderror
-                                </div>
-                        </div>
-
-                        <div class="form-group row">
-                                <label for="name" class="col-md-4 col-form-label text-md-right">{{ __('質問') }}</label>
-
-                                <div class="col-md-6">
-                                    <textarea id="comment" type="text" class="form-control @error('comment') is-invalid @enderror" name="comment">
-                                    {{ old('comment') }}
-                                    </textarea>
-                                    @error('name')
-                                        <span class="invalid-feedback" role="alert">
-                                            <strong>{{ $message }}</strong>
-                                        </span>
-                                    @enderror
-                                </div>
-                        </div>
-
-                        <div class="form-group row mb-0">
-                                <div class="col-md-6 offset-md-4">
-                                    <button type="submit" class="btn btn-primary">
-                                        {{ __('登録') }}
-                                    </button>
-                                </div>
-                        </div>
-                    </form> 
-                    @endauth  
-
-                </div>
-            </div>
-        </div>
-    </div>
+            </ul>
+        </section>
+    </aside>
 </div>
-        
+@endsection

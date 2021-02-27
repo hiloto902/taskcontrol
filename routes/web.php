@@ -27,9 +27,9 @@ Route::group(['middleware' => ['auth']], function () {
 
     Route::get('/edit2', 'App\Http\Controllers\TopController@edit2');
 
-    Route::get('/add_companies', 'App\Http\Controllers\TopController@add_companies');
+    Route::get('/top/add_companies', 'App\Http\Controllers\TopController@add_companies');
 
-    Route::get('/add_users', 'App\Http\Controllers\TopController@add_users');
+    Route::get('/top/add_users', 'App\Http\Controllers\TopController@add_users');
 
     Route::get('/add_matters', 'App\Http\Controllers\TopController@add_matters');
 

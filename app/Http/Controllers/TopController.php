@@ -142,7 +142,7 @@ class TopController extends Controller
     
     public function add_matters($id)
     {
-        return view("top/add_matters")
+        return view("top.add_matters")
             ->with('matter', Matter::find($id));
     }
 

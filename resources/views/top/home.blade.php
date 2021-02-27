@@ -15,17 +15,16 @@
                         </tr>
                         </thead>
                         <tbody>
-                        //持ってくるのをmatters
-                            @foreach($tasks as $task)
+                            @foreach($matters as $matter)
                             <tr>
-                                <td>{{$task->title}}</td>
+                                <td>{{$matter->title}}</td>
                                 
-                                <td>{{$task->comment}}</td>
+                                <td>{{$matter->comment}}</td>
                                 <td>
                                     <div style="display:inline-flex">
-                                        <a href="{{route('tasks.show', ['task'=>$task->id])}}" class="btn btn-primary btn-sm">詳細</a>
-                                        <a href="{{route('tasks.edit',['task'=>$task->id])}}" class="btn btn-primary btn-sm">編集</a>
-                                        <form action="{{route('tasks.destroy',['task'=>$task->id])}}" method="POST">
+                                        <a href="{{route('matters.show', ['matter'=>$matter->id])}}" class="btn btn-primary btn-sm">詳細</a>
+                                        <a href="{{route('matters.edit',['matter'=>$matter->id])}}" class="btn btn-primary btn-sm">編集</a>
+                                        <form action="{{route('matters.destroy',['matter'=>$matter->id])}}" method="POST">
                                             {{ csrf_field() }}
                                             @method('DELETE')
                                             <input type="submit" value="削除" class="btn btn-danger btn-sm btn-dell"
@@ -50,9 +49,9 @@
             <ul class="sidebar-menu">
 
             <!-- メニュー項目 -->
-            <li id="company"><a href="/admin/member/new">発注会社マスタ</a></li>
-            <li id="user"><a href="/admin/member/edit">新規アカウント追加</a></li>
-            <li id="matter"><a href="/admin/member/add">新規案件追加</a></li>
+            <li id="company"><a href="top.add_companies">発注会社マスタ</a></li>
+            <li id="user"><a href="top.add_users">新規アカウント追加</a></li>
+            <li id="matter"><a href="top/add_matters">新規案件追加</a></li>
 
             </ul>
         </section>
