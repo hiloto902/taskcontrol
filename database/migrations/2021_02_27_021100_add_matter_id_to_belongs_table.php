@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class AddCompanyIdTousersTable extends Migration
+class AddMatterIdToBelongsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,11 +13,11 @@ class AddCompanyIdTousersTable extends Migration
      */
     public function up()
     {
-        Schema::table('users', function (Blueprint $table) {
-            $table->bigInteger('company_id')->unsigned();
+        Schema::table('belongs', function (Blueprint $table) {
+            $table->bigInteger('matter_id')->unsigned();
 
-            $table->foreign('company_id')
-            ->references('id')->on('companies')
+            $table->foreign('matter_id')
+            ->references('id')->on('matters')
             ->onDelete('cascade');
         });
     }
@@ -29,8 +29,6 @@ class AddCompanyIdTousersTable extends Migration
      */
     public function down()
     {
-        Schema::table('users', function (Blueprint $table) {
-            //
-        });
+        Schema::dropIfExists('matters');
     }
 }

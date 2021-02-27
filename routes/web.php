@@ -36,8 +36,6 @@ Route::group(['middleware' => ['auth']], function () {
 
     Route::resource('/tasks', 'App\Http\Controllers\TaskController');
 
-    Route::get('/detail', 'App\Http\Controllers\TaskController@detail');
-    
 
     Route::resource('/answer', 'App\Http\Controllers\AnswerController');
 

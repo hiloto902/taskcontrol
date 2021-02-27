@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Matters;
+use App\Models\Matter;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -16,7 +16,7 @@ class TopController extends Controller
     public function index(Request $request)
     {
         //TOP画面＝案件を表示
-        return view("top.home")->with('matters',Matters::all());
+        return view("top.home")->with('matters',Matter::all());
     }
 
     /**
