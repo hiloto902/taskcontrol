@@ -18,7 +18,7 @@ use Illuminate\Support\Facades\Route;
 
 Auth::routes();
 
-Route::group(['middleware' => ['auth']], function () {
+
     Route::get('/home', [App\Http\Controllers\TaskController::class, 'index'])->name('home');
 
     Route::resource('/top', 'App\Http\Controllers\TopController');
@@ -27,7 +27,7 @@ Route::group(['middleware' => ['auth']], function () {
 
     Route::get('/edit2', 'App\Http\Controllers\TopController@edit2');
 
-    Route::get('/top/add_companies', 'App\Http\Controllers\TopController@add_companies');
+    Route::get('/top/add_companies', 'App\Http\Controllers\TopController@add_companies')->name('top.add_companies');
 
     Route::get('/top/add_users', 'App\Http\Controllers\TopController@add_users');
 
@@ -38,5 +38,3 @@ Route::group(['middleware' => ['auth']], function () {
 
 
     Route::resource('/answer', 'App\Http\Controllers\AnswerController');
-
-});

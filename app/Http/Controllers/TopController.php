@@ -128,8 +128,9 @@ class TopController extends Controller
 
     //ページ遷移
 
-    public function add_companies($id)
+    public function add_companies()
     {
+        logger("aaaaaaaaaaaaaaaaaaaaaaaaaa");
         return view("top/add_companies")
             ->with('company', Company::find($id));
     }
