@@ -20,7 +20,7 @@ class BelongsTable extends Migration
             $table->bigInteger('user_id')->unsigned();
             $table->bigInteger('matter_id')->unsigned();
             $table->timestamps();
-            $table->boolen('is_admin');
+            $table->boolean('is_admin');
 
             $table->foreign('user_id')
             ->references('id')->on('users')

@@ -44,7 +44,7 @@ class TaskController extends Controller
         $task->comment = $request->input('comment');
         $task->save();
 
-        return redirect(route('home.index'));
+        return redirect(route('tasks.index'));
     }
 
     /**
@@ -87,7 +87,7 @@ class TaskController extends Controller
         $task->comment = $request->input('comment');
         $task->save();
 
-        return redirect(route('home.index'));
+        return redirect(route('tasks.index'));
     }
 
     /**
@@ -99,7 +99,7 @@ class TaskController extends Controller
     public function destroy(Task $task)
     {
         $task->delete();
-        return redirect(route('home.index'));
+        return redirect(route('tasks.index'));
     }
 
    

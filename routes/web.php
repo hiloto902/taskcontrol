@@ -18,23 +18,14 @@ use Illuminate\Support\Facades\Route;
 
 Auth::routes();
 
-
-    Route::get('/home', [App\Http\Controllers\TaskController::class, 'index'])->name('home');
-
-    Route::resource('/top', 'App\Http\Controllers\TopController');
-
-    Route::get('/edit1', 'App\Http\Controllers\TopController@edit2');
-
-    Route::get('/edit2', 'App\Http\Controllers\TopController@edit2');
-
-    Route::get('/top/add_companies', 'App\Http\Controllers\TopController@add_companies')->name('top.add_companies');
-
-    Route::get('/top/add_users', 'App\Http\Controllers\TopController@add_users');
-
-    Route::get('/add_matters', 'App\Http\Controllers\TopController@add_matters');
-
-
-    Route::resource('/tasks', 'App\Http\Controllers\TaskController');
-
-
-    Route::resource('/answer', 'App\Http\Controllers\AnswerController');
+Route::namespace('App\Http\Controllers')->group(function () {
+    Auth::routes();
+    Route::get('/top', 'TopController@index')->name('top');
+    Route::get('/top/add_companies', 'TopController@add_companies')->name('top/add_companies');
+    Route::get('/top/add_users', 'TopController@add_users')->name('top/add_users');
+    Route::get('/top/add_matters', 'TopController@add_matters')->name('top/add_matters');
+    Route::get('/edit1', 'TopController@edit2');
+    Route::get('/edit2', 'TopController@edit2');
+    Route::resource('/tasks', 'TaskController');
+    Route::resource('/answer', 'AnswerController');
+});

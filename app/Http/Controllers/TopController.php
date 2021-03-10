@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\Matter;
+use App\Models\Company;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -96,7 +98,7 @@ class TopController extends Controller
     public function edit2($id)
     {
         return view("top.edit_company")
-            ->with('company', Company::find($id));
+            ->with('company', Company::find(isset($id)));
     }
 
     /**
@@ -130,21 +132,20 @@ class TopController extends Controller
 
     public function add_companies()
     {
-        logger("aaaaaaaaaaaaaaaaaaaaaaaaaa");
         return view("top/add_companies")
-            ->with('company', Company::find($id));
+            ->with('companies', Company::all());
     }
 
-    public function add_users($id)
+    public function add_users()
     {
         return view("top/add_users")
-            ->with('user', User::find($id));
+            ->with('users', User::all());
     }
     
-    public function add_matters($id)
+    public function add_matters()
     {
         return view("top.add_matters")
-            ->with('matter', Matter::find($id));
+            ->with('matter', Matter::all());
     }
 
     public function update1(Request $request, $id)

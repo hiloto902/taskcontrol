@@ -25,4 +25,10 @@ class HomeController extends Controller
     {
         return redirect(route('home.index'));
     }
+
+    public function about()
+    {
+        return view('about');
+    }
+    
 }

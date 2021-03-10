@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Answer;
 use Illuminate\Http\Request;
 
 class AnswerController extends Controller
@@ -36,12 +37,12 @@ class AnswerController extends Controller
     public function store(Request $request)
     {
         //返信を保存
-        $answer = new Task();
+        $answer = new Answer();
         $answer->user_id = Auth::id();
         $answer->answer = $request->input('answer');
         $answer->save();
 
-        return redirect(route('home.index'));
+        return redirect(route('answer.index'));
     }
 
     /**

@@ -44,14 +44,19 @@
             </div>
         </div>
     </div>
+    <ul class="navbar-nav ml-auto">
+    <li class="nav-item">
+        <a class="nav-link" href="{{ url('about') }}">{{ __('使い方') }}</a>
+    </li> 
+    </ul>
     <aside class="main-sidebar">
         <section class="sidebar">
             <ul class="sidebar-menu">
 
             <!-- メニュー項目 -->
-            <li id="company"><a href="{{ route('top.add_companies') }}">{{ __('会社発注マスタ') }}</a></li>
-            <li id="user"><a href="top.add_users">新規アカウント追加</a></li>
-            <li id="matter"><a href="top/add_matters">新規案件追加</a></li>
+            <li id="company"><a href="top/add_companies">{{ __('会社発注マスタ') }}</a></li>
+            <li id="user"><a href="top/add_users">{{ __('新規アカウント追加') }}</a></li>
+            <li id="matter"><a href="top/add_matters">{{ __('新規案件追加') }}</a></li>
 
             </ul>
         </section>
