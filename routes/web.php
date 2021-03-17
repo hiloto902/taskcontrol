@@ -15,17 +15,21 @@ use Illuminate\Support\Facades\Route;
 
 
 
-
 Auth::routes();
-
+//すべてのユーザー
 Route::namespace('App\Http\Controllers')->group(function () {
-    Auth::routes();
+    
     Route::get('/top', 'TopController@index')->name('top');
+
+    Route::group(['middleware' => ['auth', 'can:admin-higher']], function () {
     Route::get('/top/add_companies', 'TopController@add_companies')->name('top/add_companies');
     Route::get('/top/add_users', 'TopController@add_users')->name('top/add_users');
     Route::get('/top/add_matters', 'TopController@add_matters')->name('top/add_matters');
+    });
+    
     Route::get('/edit1', 'TopController@edit2');
     Route::get('/edit2', 'TopController@edit2');
     Route::resource('/tasks', 'TaskController');
     Route::resource('/answer', 'AnswerController');
 });
+

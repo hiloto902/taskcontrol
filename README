@@ -1,19 +1,5 @@
-matters = 返信できる画面
-
-home = 案件と、新規課題制作ボタンとかがある画面
-		TaskControllerで操作
-		 store, edit, destroy *2    中身:task, answer
-
-top　= 最初の画面、ユーザーの追加ボタンとかがある
-		TopControllerで操作
-		　store*2, edit, destroy      中身:company, user
-		  store, edit, destroy        中身:matter
-
-ユーザーテーブル
-案件
-課題
-回答
-案件所属ユーザー　案件とユーザーを紐づける
+App/Providers/AuthServiceProvider.php
+ここで権限管理
 
 matters 案件
 belongs 案件所属

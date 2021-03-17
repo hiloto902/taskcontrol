@@ -32,9 +32,14 @@ class AuthServiceProvider extends ServiceProvider
           Gate::define('admin-higher', function ($user) {
             return ($user->role > 0 && $user->role <= 5);
           });
-          // 一般ユーザ以上（つまり全権限）に許可
-          Gate::define('user-higher', function ($user) {
+          // A社
+          Gate::define('A', function ($user) {
             return ($user->role > 0 && $user->role <= 10);
-            });
+          });
+          //B社
+          Gate::define('B', function ($user) {
+            return ($user->role > 10 && $user->role <= 20);
+          });
+          
     }
 }
