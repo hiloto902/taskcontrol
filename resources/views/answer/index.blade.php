@@ -7,7 +7,7 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-                <div class="card-header">課題の追加</div>
+                <div class="card-header">返信</div>
 
                 <div class="card-body">
                     @if (session('status'))
@@ -19,29 +19,14 @@
                     <form method="POST" action="{{ route('answer.store') }}">
                         @csrf
                         <div class="form-group row">
-                                <label for="name" class="col-md-4 col-form-label text-md-right">{{ __('課題') }}</label>
+                                <label for="name" class="col-md-4 col-form-label text-md-right">{{ __('返信') }}</label>
 
                                 <div class="col-md-6">
-                                    <input id="title" type="text" class="form-control @error('title') is-invalid @enderror" name="title" value="{{ old('title') }}" required autocomplete="title" autofocus>
+                                    <input id="answer" type="text" class="form-control @error('answer') is-invalid @enderror" name="answer" value="{{ old('answer') }}" required autocomplete="answer" autofocus>
 
                                     @error('name')
                                         <span class="invalid-feedback" role="alert">
-                                            <strong>{{ $message }}</strong>
-                                        </span>
-                                    @enderror
-                                </div>
-                        </div>
-
-                        <div class="form-group row">
-                                <label for="name" class="col-md-4 col-form-label text-md-right">{{ __('質問') }}</label>
-
-                                <div class="col-md-6">
-                                    <textarea id="comment" type="text" class="form-control @error('comment') is-invalid @enderror" name="comment">
-                                    {{ old('comment') }}
-                                    </textarea>
-                                    @error('name')
-                                        <span class="invalid-feedback" role="alert">
-                                            <strong>{{ $message }}</strong>
+                                            <strong>{{ $answer }}</strong>
                                         </span>
                                     @enderror
                                 </div>
@@ -67,21 +52,17 @@
                             
                 
                 <div class="card">
-                    <div class="card-header">課題一覧</div>
+                    <div class="card-header">返信一覧</div>
                     <table id='list-table' class="table table-striped table-hover">
                         <thead>
                         <tr>
-                            <th>課題</th>
-                            
-                            <th>質問</th>
+                            <th>返信</th>
                         </tr>
                         </thead>
                         <tbody>
                             @foreach($answers as $answer)
                             <tr>
-                                <td>{{$answer->title}}</td>
-                                
-                                <td>{{$answer->comment}}</td>
+                                <td>{{$answer->answer}}</td>
                                 <td>
                                     <div style="display:inline-flex">
                                         <a href="{{route('answer.edit',['answer'=>$answer->id])}}" class="btn btn-primary btn-sm">編集</a>
