@@ -16,8 +16,9 @@ class TaskController extends Controller
      */
     public function index(Request $request)
     {
+        
         //○○案件の画面＝課題を表示
-        return view("home.index")->with('tasks',Task::all());
+        return view("home/index")->with('tasks',Task::whereIn('matter_id', Auth::user()->company->matter->pluck('id'))->get());
     }
 
     /**
@@ -42,6 +43,7 @@ class TaskController extends Controller
         $task->user_id = Auth::id();
         $task->title = $request->input('title');
         $task->comment = $request->input('comment');
+        $task->matter_id = $request->input('matter_id');
         $task->save();
 
         return redirect(route('tasks.index'));
@@ -85,6 +87,7 @@ class TaskController extends Controller
         $task->user_id = Auth::id();
         $task->title = $request->input('title');
         $task->comment = $request->input('comment');
+        $task->matter_id = $request->input('matter_id');
         $task->save();
 
         return redirect(route('tasks.index'));

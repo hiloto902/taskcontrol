@@ -17,8 +17,10 @@ class AnswerController extends Controller
      */
     public function index()
     {
+        
+        return Answer::whereIn('task_id', Auth::user()->company->matter->task->pluck('id'))->get();
         //○○についての画面＝押された課題と返信を表示
-        return view("answer.index")->with('answers',Answer::all());
+        return view("answer.index")->with('answers',Answer::whereIn('task_id', Auth::user()->company->matter->task->pluck('id'))->get());
     }
 
     /**
@@ -41,8 +43,8 @@ class AnswerController extends Controller
     {
         //返信を保存
         $answer = new Answer();
-        $answer->user_id = Auth::id();
         $answer->answer = $request->input('answer');
+        $answer->task_id = $request->input('task_id');
         $answer->save();
 
         return redirect(route('answer.index'));
@@ -80,7 +82,11 @@ class AnswerController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $answer->answer = $request->input('answer');
+        $answer->task_id = $request->input('task_id');
+        $answer->save();
+
+        return redirect(route('answer.index'));
     }
 
     /**

@@ -9,9 +9,7 @@
                     <table id='list-table' class="table table-striped table-hover">
                         <thead>
                         <tr>
-                            <th>課題</th>
-                            
-                            <th>質問</th>
+                            <th>案件</th>
                         </tr>
                         </thead>
                         <tbody>
@@ -19,17 +17,10 @@
                             <tr>
                                 <td>{{$matter->title}}</td>
                                 
-                                <td>{{$matter->comment}}</td>
+                                
                                 <td>
                                     <div style="display:inline-flex">
-                                        <a href="{{route('matters.show', ['matter'=>$matter->id])}}" class="btn btn-primary btn-sm">詳細</a>
-                                        <a href="{{route('matters.edit',['matter'=>$matter->id])}}" class="btn btn-primary btn-sm">編集</a>
-                                        <form action="{{route('matters.destroy',['matter'=>$matter->id])}}" method="POST">
-                                            {{ csrf_field() }}
-                                            @method('DELETE')
-                                            <input type="submit" value="削除" class="btn btn-danger btn-sm btn-dell"
-                                                onclick="return confirm('本当に削除しますか？');">
-                                        </form>
+                                        
                                     </div>
                                 </td>
                             </tr>
@@ -44,11 +35,7 @@
             </div>
         </div>
     </div>
-    <ul class="navbar-nav ml-auto">
-    <li class="nav-item">
-        <a class="nav-link" href="{{ url('about') }}">{{ __('使い方') }}</a>
-    </li> 
-    </ul>
+    
     <aside class="main-sidebar">
         <section class="sidebar">
             <ul class="sidebar-menu">

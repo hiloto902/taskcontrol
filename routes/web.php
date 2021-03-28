@@ -19,17 +19,21 @@ Auth::routes();
 //すべてのユーザー
 Route::namespace('App\Http\Controllers')->group(function () {
     
-    Route::get('/top', 'TopController@index')->name('top');
 
     Route::group(['middleware' => ['auth', 'can:admin-higher']], function () {
+    Route::get('/top', 'TopController@index')->name('top.index');
     Route::get('/top/add_companies', 'TopController@add_companies')->name('top/add_companies');
+    Route::post('/top/add_companies', 'TopController@store1')->name('top/store1');
     Route::get('/top/add_users', 'TopController@add_users')->name('top/add_users');
+    Route::post('/top/add_users', 'TopController@store2')->name('top/store2');
     Route::get('/top/add_matters', 'TopController@add_matters')->name('top/add_matters');
+    Route::post('/top/add_matters', 'TopController@store3')->name('top/store3');
+
     });
     
     Route::get('/edit1', 'TopController@edit2');
     Route::get('/edit2', 'TopController@edit2');
     Route::resource('/tasks', 'TaskController');
-    Route::resource('/answer', 'AnswerController');
+    Route::resource('/answers', 'AnswerController');
 });
 

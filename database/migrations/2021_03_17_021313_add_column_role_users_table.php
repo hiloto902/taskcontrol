@@ -15,6 +15,11 @@ class AddColumnRoleUsersTable extends Migration
     {
         Schema::table('users', function (Blueprint $table) {
             $table->tinyInteger('role')->default(0)->after('password')->index('index_role')->comment('ロール');
+            $table->bigInteger('company_id')->unsigned();
+            
+            $table->foreign('company_id')
+            ->references('id')->on('companies')
+            ->onDelete('cascade');
         });
     }
 

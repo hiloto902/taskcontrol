@@ -16,13 +16,13 @@
                         </div>
                     @endif
                  @auth
-                    <form method="POST" action="{{ route('tasks.store') }}">
+                    <form method="POST" action="{{ route('top/store1') }}">
                         @csrf
                         <div class="form-group row">
-                                <label for="name" class="col-md-4 col-form-label text-md-right">{{ __('課題') }}</label>
+                                <label for="name" class="col-md-4 col-form-label text-md-right">{{ __('会社') }}</label>
 
                                 <div class="col-md-6">
-                                    <input id="title" type="text" class="form-control @error('title') is-invalid @enderror" name="title" value="{{ old('title') }}" required autocomplete="title" autofocus>
+                                    <input id="name" type="text" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ old('name') }}" required autocomplete="name" autofocus>
 
                                     @error('name')
                                         <span class="invalid-feedback" role="alert">
