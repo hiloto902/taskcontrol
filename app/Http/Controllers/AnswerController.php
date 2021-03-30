@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\User;
+use App\Models\Task;
 use App\Models\Answer;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -17,10 +17,8 @@ class AnswerController extends Controller
      */
     public function index()
     {
-        
-        return Answer::whereIn('task_id', Auth::user()->company->matter->task->pluck('id'))->get();
-        //○○についての画面＝押された課題と返信を表示
-        return view("answer.index")->with('answers',Answer::whereIn('task_id', Auth::user()->company->matter->task->pluck('id'))->get());
+        return view("answers/index")->with('answers',Answer::whereIn('task_id',
+        Task::whereIn('matter_id', Auth::user()->company->matter->pluck('id'))->get()->pluck('id')))->get();
     }
 
     /**

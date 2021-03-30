@@ -16,7 +16,7 @@
                         </div>
                     @endif
                  @auth
-                    <form method="POST" action="{{ route('answer.store') }}">
+                    <form method="POST" action="{{ route('answers.store') }}">
                         @csrf
                         <div class="form-group row">
                                 <label for="name" class="col-md-4 col-form-label text-md-right">{{ __('返信') }}</label>
@@ -79,8 +79,8 @@
                                 <td>{{$answer->answer}}</td>
                                 <td>
                                     <div style="display:inline-flex">
-                                        <a href="{{route('answer.edit',['answer'=>$answer->id])}}" class="btn btn-primary btn-sm">編集</a>
-                                        <form action="{{route('answer.destroy',['answer'=>$answer->id])}}" method="POST">
+                                        <a href="{{route('answers.edit',['answer'=>$answer->id])}}" class="btn btn-primary btn-sm">編集</a>
+                                        <form action="{{route('answers.destroy',['answer'=>$answer->id])}}" method="POST">
                                             {{ csrf_field() }}
                                             @method('DELETE')
                                             <input type="submit" value="削除" class="btn btn-danger btn-sm btn-dell"

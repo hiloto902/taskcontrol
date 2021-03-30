@@ -98,7 +98,7 @@
                                 <td>{{$task->comment}}</td>
                                 <td>
                                     <div style="display:inline-flex">
-                                        <a href="{{route('answer.index')}}" class="btn btn-primary btn-sm">詳細</a>
+                                        <a href="{{route('answers.index')}}" class="btn btn-primary btn-sm">詳細</a>
                                         <a href="{{route('tasks.edit',['task'=>$task->id])}}" class="btn btn-primary btn-sm">編集</a>
                                         <form action="{{route('tasks.destroy',['task'=>$task->id])}}" method="POST">
                                             {{ csrf_field() }}
