@@ -17,8 +17,8 @@ class AnswerController extends Controller
      */
     public function index()
     {
-        return view("answers/index")->with('answers',Answer::whereIn('task_id',
-        Task::whereIn('matter_id', Auth::user()->company->matter->pluck('id'))->get()->pluck('id')))->get();
+        return view("answer/index")->with('answers',Answer::whereIn('task_id',
+Task::whereIn('matter_id', Auth::user()->company->matter->pluck('id'))->get()->pluck('id'))->get());
     }
 
     /**
@@ -45,7 +45,7 @@ class AnswerController extends Controller
         $answer->task_id = $request->input('task_id');
         $answer->save();
 
-        return redirect(route('answer.index'));
+        return redirect(route('answers.index'));
     }
 
     /**
@@ -67,7 +67,7 @@ class AnswerController extends Controller
      */
     public function edit($id)
     {
-        return view("answer.edit")
+        return view("answer/edit")
             ->with('answer', Answer::find($id));
     }
 
@@ -84,7 +84,7 @@ class AnswerController extends Controller
         $answer->task_id = $request->input('task_id');
         $answer->save();
 
-        return redirect(route('answer.index'));
+        return redirect(route('answers.index'));
     }
 
     /**
@@ -96,6 +96,6 @@ class AnswerController extends Controller
     public function destroy($id)
     {
         $answer->delete();
-        return redirect(route('answer.index'));
+        return redirect(route('answers.index'));
     }
 }

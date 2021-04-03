@@ -34,6 +34,6 @@ Route::namespace('App\Http\Controllers')->group(function () {
     Route::get('/edit1', 'TopController@edit2');
     Route::get('/edit2', 'TopController@edit2');
     Route::resource('/tasks', 'TaskController');
-    Route::resource('/answers', 'AnswerController');
+    Route::resource('answers', 'AnswerController');
 });
 
